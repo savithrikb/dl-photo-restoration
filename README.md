@@ -7,3 +7,8 @@ As a first step of this project we have to load the data and visualize it. We us
 
 ## Define the discriminator architecture
 A CycleGAN is made of two discriminator and two generator networks. The discriminators are a neural network for determining whether the image is real or fake. We used similiar architecture of the paper Unsupervised Image Super-Resolution using Cycle-in-Cycle Generative Adversarial Networks for both discriminator and generator. This network sees a 512x512x3 image, and passes it through 5 convolutional layers that downsample the image by a factor of 2. The first four convolutional layers have a BatchNorm and ReLu activation function with negative slope 0.2 applied to their output, and the last acts as a classification layer that outputs one value.
+
+## Define the generator architecture
+The generator network has three parts, an encoder, a transformer, and a decoder. The input image is fed directly into the encoder, which shrinks the representation size while increasing the number of channels. The encoder is composed of three convolutional layers. The transformer is a series of six residul blocks, also called ResNet blocks. Finally, the decoder is composed of three transpose convolutional layers (sometimes called de-conv layers) which upsample the output of the ResNet blocks and create a new image. We use the architecture according to the same paper mentioned above.
+
+
